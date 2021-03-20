@@ -63,18 +63,24 @@
     $(".add-burger").on("click", function(event) {
     
     var newVal = $('#burgerName').val().trim();
-    console.log(newVal)
+    
+    var newBurger = {
+      burger: newVal
+    };
+   
+
+    console.log(newBurger)
     
     $.ajax("/", {
       type: "POST",
-      data: newVal
+      data: newBurger
     }).then(
       function() {
-        console.log("Added ", newVal);
+        console.log("Added ", newBurger);
 
         location.reload();
       }
     );
-    */
+
   });
 </script>

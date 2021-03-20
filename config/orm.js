@@ -10,24 +10,21 @@ module.exports = {
             cb(results);
         });
     },
-    insertOne: function(col1, col2, colValue1, colValue2){
-        let query = "INSERT INTO burgers (??, ??) VALUES(??,??)";
-        connection.query(query, [col1, col2, colValue1, colValue2], (err, results) => {
+    create: function(table, val1, cb){
+        let query = "INSERT INTO ?? (devoured, burger_name) VALUES('0', ";
+        let val = "'" + val1 + "')";
+        let queryString = query + val
+
+        connection.query(queryString, [table], (err, results) => {
             if(err) console.log(err);
             console.log(results);
+            cb(results);
         });
     },
-    update: function(table, col1, colval1, col2, condition, cb){
+    update: function(table, condition, cb){
 
         let query = "Update ?? SET devoured = '1' WHERE ";
-
-        // arr = []
-        // recID = "'" + recID + "'";    
-        // arr.push("ID" + "=" + recID);
-        // arr.toString();
-
         let queryString = query + condition
-
         
         connection.query(queryString, [table], (err, results) => {
             if(err) console.log(err);

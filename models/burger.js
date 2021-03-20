@@ -7,14 +7,20 @@ var burger = {
       });
     },
 
-    insertOne: function(col1, col2, colValue1, colValue2) {
+    create: function(col1, col2, colValue1, colValue2) {
       orm.create(col1, col2, colValue1, colValue2, function(res) {
         cb(res);
       });
     },
 
+    create: function(val1, cb) {
+        orm.create("burgers", val1, function(res) {
+            cb(res);
+        });
+    },
+
     update: function(condition, cb) {
-        orm.update("burgers", "devoured", '1', "id", condition, function(res) {
+        orm.update("burgers", condition, function(res) {
           cb(res);
         });
       },

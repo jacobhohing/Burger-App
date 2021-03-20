@@ -10,24 +10,26 @@ router.get("/", (req, res) => {
         var burgerObj = {
           burgers: data
         };
-        console.log(burgerObj);
         res.render("index", burgerObj);
-      })
+    })
+});
 
-
+router.post("/", function(req, res) {
+    
+    var newVal = req.body.burger
+    burger.create(newVal, function(result) {
+    
+    });
   });
 
-  router.put("/", function(req, res) {
+router.put("/", function(req, res) {
     
     var recID = req.body.id
     var condition = "id = " + recID;
   
-    console.log(condition);
-    console.log(req.body);
-  
     burger.update(condition, function(result) {
 
     });
-  });
+});
 
   module.exports = router;
