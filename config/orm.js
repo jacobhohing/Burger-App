@@ -6,7 +6,6 @@ module.exports = {
         let query = "SELECT * FROM ??";
         connection.query(query, [table], (err, results) => {
             if(err) console.log(err);
-            console.log(results);
             cb(results);
         });
     },
@@ -17,7 +16,6 @@ module.exports = {
 
         connection.query(queryString, [table], (err, results) => {
             if(err) console.log(err);
-            console.log(results);
             cb(results);
         });
     },
@@ -28,7 +26,6 @@ module.exports = {
         
         connection.query(queryString, [table], (err, results) => {
             if(err) console.log(err);
-            console.log(results);
             cb(results);
         });
     },   
