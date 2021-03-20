@@ -1,12 +1,13 @@
-var connection = require("connection.js");
+var connection = require("../config/connection.js");
 
 module.exports = {
 
-    selectAll: function(table){
+    all: function(table, cb){
         let query = "SELECT * FROM ??";
         connection.query(query, [table], (err, results) => {
             if(err) console.log(err);
             console.log(results);
+            cb(results);
         });
     },
     insertOne: function(col1, col2, colValue1, colValue2){
