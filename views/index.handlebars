@@ -8,23 +8,30 @@
     <div class="row">
         <div class="col-4">
             <h3>Burgers To Be Eaten</h3>
-            <ul>
+            <ul  class="list-group">
                 {{#each burgers}}
                     {{#unless devoured}}
-                        <li>{{burger_name}}</li>
+                        <li class="list-group-item">
+                            <div>{{burger_name}}</div>
+                            <button id="{{id}}" type="button" class="btn btn-primary eat-burger">Eat Burger</button>
+                        </li>
                     {{/unless}}
                 {{/each}}
             </ul>
         </div>
          <div class="col-4">
              <h3>Add a Burger</h3>
+             <div class="">
+                <input type="text" class="form-control mb-3" id="burgerName" placeholder="Your Burger">
+                <button id="newBurger" type="button" class="btn btn-primary add-burger">Add Burger</button>
+            </div>
         </div>
          <div class="col-4">
             <h3>Burgers I Already Devoured</h3>
-            <ul>
+            <ul  class="list-group">
                  {{#each burgers}}
                     {{#if devoured}}
-                           <li>{{burger_name}}</li>
+                           <li class="list-group-item">{{burger_name}}</li>
                     {{/if}}
                 {{/each}}
             </ul>
@@ -32,3 +39,42 @@
     </div>
 
 </div>
+<script>
+  $(".eat-burger").on("click", function(event) {
+    
+    var id = $(this).attr("id");
+    
+    var recordID = {
+      id: id
+    };
+   
+    $.ajax("/", {
+      type: "PUT",
+      data: recordID
+    }).then(
+      function() {
+        console.log("changed devoured to", id);
+
+        location.reload();
+      }
+    );
+  });
+
+    $(".add-burger").on("click", function(event) {
+    
+    var newVal = $('#burgerName').val().trim();
+    console.log(newVal)
+    
+    $.ajax("/", {
+      type: "POST",
+      data: newVal
+    }).then(
+      function() {
+        console.log("Added ", newVal);
+
+        location.reload();
+      }
+    );
+    */
+  });
+</script>

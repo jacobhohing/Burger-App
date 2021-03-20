@@ -17,11 +17,22 @@ module.exports = {
             console.log(results);
         });
     },
-    updateOne: function(){
-        let query = "";
-        connection.query(query, [], (err, results) => {
+    update: function(table, col1, colval1, col2, condition, cb){
+
+        let query = "Update ?? SET devoured = '1' WHERE ";
+
+        // arr = []
+        // recID = "'" + recID + "'";    
+        // arr.push("ID" + "=" + recID);
+        // arr.toString();
+
+        let queryString = query + condition
+
+        
+        connection.query(queryString, [table], (err, results) => {
             if(err) console.log(err);
             console.log(results);
+            cb(results);
         });
     },   
 

@@ -17,4 +17,17 @@ router.get("/", (req, res) => {
 
   });
 
+  router.put("/", function(req, res) {
+    
+    var recID = req.body.id
+    var condition = "id = " + recID;
+  
+    console.log(condition);
+    console.log(req.body);
+  
+    burger.update(condition, function(result) {
+
+    });
+  });
+
   module.exports = router;

@@ -12,8 +12,13 @@ var burger = {
         cb(res);
       });
     },
+
+    update: function(condition, cb) {
+        orm.update("burgers", "devoured", '1', "id", condition, function(res) {
+          cb(res);
+        });
+      },
   };
 
-  //UpdateOne
 
   module.exports = burger;
